@@ -104,7 +104,7 @@
             this.Controls.Add(this.Decode);
             this.Controls.Add(this.Encode);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Text Encryption and Decryption V1.0 (Feb.5,2020)";
             this.ResumeLayout(false);
             this.PerformLayout();
 

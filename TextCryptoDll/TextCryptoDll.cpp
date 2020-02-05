@@ -15,8 +15,12 @@ std::string DesCbcDecrypt(std::string source, std::string inputKey, std::string 
 TEXTCRYPTODLL_API bool desEncrypt(const char *plainText, char *outValue, int maxLength, const char *key, const char *iv)
 {
 	string source(plainText);
-	string inputKey(key);
-	string inputIv(iv);
+	string inputKey("00000000");
+	string inputIv("00000000");
+
+	if (key) inputKey = key;
+	if (iv) inputIv = iv;
+
 	string cipherText = DesCbcEncrypt(source, inputKey, inputIv);
 
 	if (maxLength >= cipherText.length())
@@ -30,8 +34,11 @@ TEXTCRYPTODLL_API bool desEncrypt(const char *plainText, char *outValue, int max
 TEXTCRYPTODLL_API bool desDecrypt(const char *cipherText, char *outValue, int maxLength, const char *key, const char *iv)
 {
 	string source(cipherText);
-	string inputKey(key);
-	string inputIv(iv);
+	string inputKey("00000000");
+	string inputIv("00000000");
+
+	if (key) inputKey = key;
+	if (iv) inputIv = iv;
 
 	string plainText = DesCbcDecrypt(source, inputKey, inputIv);
 

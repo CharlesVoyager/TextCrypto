@@ -43,7 +43,7 @@ Source: "..." (64 bytes) -> PKCS#5 padding "...88888888" (72 bytes) -> des cbc e
 */
             int maxLength = ((textBoxPlaintext.Text.Length + 8 + 3) / 3) * 4; // Plaintext ---> PKCS#5 padding ---> DES CBC Encode ---> Base64 encode
             StringBuilder result = new StringBuilder(maxLength);
-            desEncrypt(textBoxPlaintext.Text, result, maxLength, null, null);
+            desEncrypt(textBoxPlaintext.Text, result, maxLength, "20200205", "12345678");
             textBoxCiphertext.Text = result.ToString();
             labelPlaintext.Text = "Plaintext: (" + textBoxPlaintext.Text.Length.ToString() + " characters)";
             labelCiphertext.Text = "Ciphertext: (" + textBoxCiphertext.Text.Length.ToString() + " characters)";
@@ -53,7 +53,7 @@ Source: "..." (64 bytes) -> PKCS#5 padding "...88888888" (72 bytes) -> des cbc e
         {
             int maxLength = textBoxCiphertext.Text.Length;
             StringBuilder result = new StringBuilder(maxLength);    // Allocate the buffer for storing the decoded text. It is enough to create the deocde buffer size the same as the size of cipher text.
-            desDecrypt(textBoxCiphertext.Text, result, maxLength, null, null);
+            desDecrypt(textBoxCiphertext.Text, result, maxLength, "20200205", "12345678");
             textBoxPlaintext.Text = result.ToString();
             labelPlaintext.Text = "Plaintext: (" + textBoxPlaintext.Text.Length.ToString() + " characters)";
             labelCiphertext.Text = "Ciphertext: (" + textBoxCiphertext.Text.Length.ToString() + " characters)";
