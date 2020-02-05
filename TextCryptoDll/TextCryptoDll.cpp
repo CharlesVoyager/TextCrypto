@@ -7,13 +7,10 @@
 using namespace std;
 using namespace EncryptProxy;
 
-
 /*
 std::string DesCbcEncrypt(std::string source, std::string inputKey, std::string inputIv);
 std::string DesCbcDecrypt(std::string source, std::string inputKey, std::string inputIv);
 */
-
-
 
 TEXTCRYPTODLL_API bool desEncrypt(const char *plainText, char *outValue, int maxLength, const char *key, const char *iv)
 {

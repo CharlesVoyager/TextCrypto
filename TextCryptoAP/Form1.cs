@@ -7,11 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TextCrypto
 {
     public partial class Form1 : Form
     {
+        #region APIs from TextCryptoDll.dll
+        [DllImport(@".\TextCryptoDll.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        private static extern bool desEncrypt(string plainText, StringBuilder result, int maxLength, string key, string iv);
+
+        [DllImport(@".\TextCryptoDll.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
+        [return: MarshalAs(UnmanagedType.I1)]
+        private static extern bool desDecrypt(string cipherText, StringBuilder result, int maxLength, string key, string iv);
+        #endregion
+
+
         public Form1()
         {
             InitializeComponent();
