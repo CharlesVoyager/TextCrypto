@@ -13,6 +13,9 @@ namespace TextCrypto
 {
     public partial class Form1 : Form
     {
+        string key = "20200205";
+        string iv = "12345678";
+
         #region APIs from TextCryptoDll.dll
         [DllImport(@".\TextCryptoDll.dll", CharSet = CharSet.Ansi, CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.I1)]
@@ -22,7 +25,6 @@ namespace TextCrypto
         [return: MarshalAs(UnmanagedType.I1)]
         private static extern bool desDecrypt(string cipherText, StringBuilder result, int maxLength, string key, string iv);
         #endregion
-
 
         public Form1()
         {
@@ -43,7 +45,7 @@ Source: "..." (64 bytes) -> PKCS#5 padding "...88888888" (72 bytes) -> des cbc e
 */
             int maxLength = ((textBoxPlaintext.Text.Length + 8 + 3) / 3) * 4; // Plaintext ---> PKCS#5 padding ---> DES CBC Encode ---> Base64 encode
             StringBuilder result = new StringBuilder(maxLength);
-            desEncrypt(textBoxPlaintext.Text, result, maxLength, "20200205", "12345678");
+            desEncrypt(textBoxPlaintext.Text, result, maxLength, key, iv);
             textBoxCiphertext.Text = result.ToString();
             labelPlaintext.Text = "Plaintext: (" + textBoxPlaintext.Text.Length.ToString() + " characters)";
             labelCiphertext.Text = "Ciphertext: (" + textBoxCiphertext.Text.Length.ToString() + " characters)";
@@ -53,7 +55,7 @@ Source: "..." (64 bytes) -> PKCS#5 padding "...88888888" (72 bytes) -> des cbc e
         {
             int maxLength = textBoxCiphertext.Text.Length;
             StringBuilder result = new StringBuilder(maxLength);    // Allocate the buffer for storing the decoded text. It is enough to create the deocde buffer size the same as the size of cipher text.
-            desDecrypt(textBoxCiphertext.Text, result, maxLength, "20200205", "12345678");
+            desDecrypt(textBoxCiphertext.Text, result, maxLength, key, iv);
             textBoxPlaintext.Text = result.ToString();
             labelPlaintext.Text = "Plaintext: (" + textBoxPlaintext.Text.Length.ToString() + " characters)";
             labelCiphertext.Text = "Ciphertext: (" + textBoxCiphertext.Text.Length.ToString() + " characters)";
