@@ -8,7 +8,7 @@ TextCryptoDll.dll provides the following two APIs that can be easily used for en
 bool desEncrypt(const char *plainText, char *outValue, int maxLength, const char *key, const char *iv);
 bool desDecrypt(const char *cipherText, char *outValue, int maxLength, const char *key, const char *iv);
 
-TextCryptoAp.exe provides a dialog based Windows application by calling TextCryptoDll.dll to encrypt the text and decryp the text.
+TextCryptoAp.exe provides a dialog based Windows application by calling TextCryptoDll.dll to encrypt the text and decrypt the text.
 
 Compiling
 =========
@@ -16,6 +16,6 @@ Compiling
 
 Using it
 ========
-- Compile TextCryptoDll. The filename is TextCryptoDll.dll.
-- Compile TextCryptoAp. The filename is TextCryptoAp.exe.
+- Compile TextCryptoDll project. The output filename is TextCryptoDll.dll.
+- Compile TextCryptoAp project. The output filename is TextCryptoAp.exe.
 - The binary DLL and executable file will be generated in the .\x64\Release (or .\x64\Debug) folder. Run TextCrypto.exe and then enter the text in the Plaintext edit control. Click "Encode" button to encrypt the text. The cipher text will be displayed in the Ciphertext edit control.
