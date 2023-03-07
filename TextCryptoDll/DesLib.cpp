@@ -4,6 +4,7 @@
 #include <openssl/des.h>
 #include <openssl/bio.h>
 #include <openssl/evp.h>
+#include <memory>
 
 #if (_WIN64 || _WIN32)
 #if _MSC_VER>=1900

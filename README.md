@@ -12,7 +12,8 @@ TextCryptoAp.exe provides a dialog based Windows application by calling TextCryp
 
 Compiling
 =========
-- Visual Studio 2017
+- Visual Studio 2022
+- .NET Framework 4.8
 
 Using it
 ========
